@@ -1,0 +1,11 @@
+CREATE TABLE CITY
+(
+  id IDENTITY NOT NULL,
+  name VARCHAR2(50) NOT NULL
+);
+
+INSERT INTO CITY (name) VALUES ('Lisboa');
+INSERT INTO CITY (name) VALUES ('Porto');
+INSERT INTO CITY (name) VALUES ('Coimbra');
+INSERT INTO CITY (name) VALUES ('Leiria');
+INSERT INTO CITY (name) VALUES ('Setubal');
