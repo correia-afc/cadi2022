@@ -2,27 +2,12 @@ package com.example.demo;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+public interface CityService {
 
-@Service
-public class CityService {
+    public List<City> getAll();
 
-    private CityRepository cityRepository;
+    public City getCity(Long id);
 
-    public CityService(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
-    }
-
-    public List<City> getAll() {
-        return cityRepository.findAll();
-    }
-
-    public City getCity(Long id) {
-        return cityRepository.findById(id).orElseThrow();
-    }
-
-    public City create(City city) {
-        return cityRepository.save(city);
-    }
+    public City create(City city);
 
 }
