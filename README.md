@@ -53,14 +53,18 @@ spring.security.user.password=xxxxx
 
 Note 1: This is simply Basic Authentication, however is is just as simple to add a more secure option (such as OAuth).
 
-Note 2: POST, PUT and DELETE endpoints will fail with a 403 response code because Spring security enables CSRF protection by default. To disable (in a real life scenario this would require some thought) it, add the following code in _DemoApplication.java_
+Note 2: POST, PUT and DELETE endpoints will fail with a 403 response code because Spring security enables CSRF protection by default. To disable it (in a real life scenario this would require some thought), add the following code in _DemoApplication.java_
 
 ```sh
 @Configuration
 class SpringBootSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+        http.csrf().disable()
+        .authorizeRequests()
+        .anyRequest().authenticated()
+        .and()
+        .httpBasic();
     }
 }
 ```
